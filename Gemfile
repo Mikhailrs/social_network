@@ -22,8 +22,12 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'activestorage'
+
+gem 'active_storage_validations'
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+ gem 'image_processing', '~> 1.2'
+#
 gem 'net-smtp'
 gem 'net-pop'
 gem 'net-imap'

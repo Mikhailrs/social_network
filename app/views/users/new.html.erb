@@ -14,6 +14,9 @@
     <p><%= form.label :password_confirmation, 'Повторите пароль' %></p>
     <p><%= form.password_field :password_confirmation %></p>
 
+    <p><%= form.label :avatar, 'Загрузка фото' %></p>
+    <p><%= form.file_field :avatar %></p>
+
     <p><%= form.submit 'Зарегистрироваться', class: "btn btn-primary" %></p>
   <% end %>
 </div>

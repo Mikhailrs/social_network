@@ -1,7 +1,9 @@
 <h1>Все пользователи</h1>
 <div class="container">
   <% @users.each do |user| %>
-      <%= link_to user.name, user %>
-      <%= button_to 'Удалить', user_path(user), method: :delete %>
+    <%= link_to user.name, user %>
+    | <%= link_to 'Удалить', user_path(user), method: :delete %>
+    <p>----------------------------------</p>
   <% end %>
 </div>
+
