@@ -1,0 +1,10 @@
+<% if @user.errors.any? %>
+    <div class="alert alert-danger">
+      Форма содержит <%= inclination(@user.errors.count, 'ошибку', 'ошибки', 'ошибок') %>:
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+    </div>
+<% end %>

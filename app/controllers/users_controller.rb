@@ -8,10 +8,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(user_params)
+    @user = User.create(user_params)
 
-    if user.save
-      redirect_to user_path(user)
+    if @user.save
+      redirect_to user_path(@user), notice: 'Аккаунт создан'
     else
       render 'new'
     end
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
     if @user.save
-      redirect_to user_path(@user)
+      redirect_to user_path(@user), notice: 'Аккаунт изменен'
     else
       render 'edit'
     end
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.delete
 
-    redirect_to users_path
+    redirect_to users_path, notice: 'Аккаунт удален'
   end
 
   private
