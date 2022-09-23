@@ -7,4 +7,7 @@
   <p><%= @user.password_digest %></p>
 </div>
 
-<p><%= link_to 'Все пользователи', users_path %></p>
+<div>
+  <%= link_to 'Редактировать', edit_user_path(@user) %> |
+  <%= link_to 'Все пользователи', users_path %>
+</div>
