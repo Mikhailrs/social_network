@@ -1,23 +1,24 @@
-<div class="container">
-  <%= render 'shared/error_messages' %>
-  <h1>Регистрация</h1>
+<%= render 'shared/error_messages' %>
+<h1 class="text-center">Регистрация</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with model: @user do |form| %>
+      <p><%= form.label :name, 'Ваше имя' %></p>
+      <p><%= form.text_field :name, class: 'form-control' %></p>
 
-  <%= form_with model: @user do |form| %>
-    <p><%= form.label :name, 'Ваше имя' %></p>
-    <p><%= form.text_field :name %></p>
+      <p><%= form.label :email, 'Почта' %></p>
+      <p><%= form.text_field :email, class: 'form-control' %></p>
 
-    <p><%= form.label :email, 'Почта' %></p>
-    <p><%= form.text_field :email %></p>
+      <p><%= form.label :password, 'Пароль' %></p>
+      <p><%= form.password_field :password, class: 'form-control' %></p>
 
-    <p><%= form.label :password, 'Пароль' %></p>
-    <p><%= form.password_field :password %></p>
+      <p><%= form.label :password_confirmation, 'Повторите пароль' %></p>
+      <p><%= form.password_field :password_confirmation, class: 'form-control' %></p>
 
-    <p><%= form.label :password_confirmation, 'Повторите пароль' %></p>
-    <p><%= form.password_field :password_confirmation %></p>
+      <p><%= form.label :avatar, 'Загрузка фото' %></p>
+      <p><%= form.file_field :avatar %></p>
 
-    <p><%= form.label :avatar, 'Загрузка фото' %></p>
-    <p><%= form.file_field :avatar %></p>
-
-    <p><%= form.submit 'Зарегистрироваться', class: "btn btn-primary" %></p>
-  <% end %>
+      <p><%= form.submit 'Зарегистрироваться', class: "btn btn-primary" %></p>
+    <% end %>
+  </div>
 </div>

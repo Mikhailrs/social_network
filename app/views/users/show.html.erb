@@ -1,13 +1,35 @@
-<div class="container">
-  <% if @user.avatar.attached? %>
-    <%= image_tag @user.avatar.variant(resize_to_limit: [200, 200])  %>
-  <% end %>
-    <p><%= @user.name %></p>
-  <p><%= @user.email %></p>
-  <p><%= @user.password_digest %></p>
-</div>
-
-<div>
-  <%= link_to 'Редактировать', edit_user_path(@user) %> |
-  <%= link_to 'Все пользователи', users_path %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="well well-md">
+      <div class="row">
+        <div class="col-md-6 col-md-4 text-center">
+          <% if @user.avatar.attached? %>
+            <%= image_tag @user.avatar, class: 'img-thumbnail'  %>
+          <% else %>
+            <%= image_tag ("photo-profile.jpg"), class: 'img-thumbnail'  %>
+          <% end %>
+          <br />
+          <br />
+          <div>
+            <%= button_to 'Редактировать', edit_user_path(@user), method: :get, class: 'btn btn-info' %>
+            <br />
+            <%= link_to 'Все пользователи', users_path %>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-8">
+          <h3><%= @user.name %></h3>
+          <small><cite>Город, страна<i class="glyphicon glyphicon-map-marker">
+          </i></cite></small>
+          <p>
+            <i class="glyphicon glyphicon-envelope"></i><%= @user.email %>
+            <br />
+            <i class="glyphicon glyphicon-gift"></i>Дата дня рождения
+          </p>
+            <button type="button" class="btn btn-primary">
+              #
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
