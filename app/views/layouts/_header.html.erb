@@ -21,6 +21,12 @@
             <span class="glyphicon glyphicon-list-alt"></span>Пользователи
           <% end %>
         </li>
+
+        <li><%= link_to user_path(current_user), class: 'button white' do %>
+            <span class="glyphicon glyphicon-user"></span>Мой аккаунт
+          <% end %>
+        </li>
+
         <li>
           <%= link_to logout_path, method: :delete, class: 'button white' do %>
             <span class="glyphicon glyphicon-log-out"></span>Выход
@@ -33,6 +39,7 @@
             <span class="glyphicon glyphicon-user"></span>Регистрация
           <% end %>
         </li>
+
         <li><%= link_to login_path, class: 'button white' do %>
             <span class="glyphicon glyphicon-log-in"></span>Вход
           <% end %>

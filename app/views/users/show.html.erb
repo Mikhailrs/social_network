@@ -13,7 +13,6 @@
           <div>
             <%= button_to 'Редактировать', edit_user_path(@user), method: :get, class: 'btn btn-info' %>
             <br />
-            <%= link_to 'Все пользователи', users_path %>
           </div>
         </div>
         <div class="col-sm-6 col-md-8">
@@ -23,7 +22,7 @@
           <p>
             <i class="glyphicon glyphicon-envelope"></i><%= @user.email %>
             <br />
-            <i class="glyphicon glyphicon-gift"></i>Дата дня рождения
+            <i class="glyphicon glyphicon-registration-mark"></i><%= @user.created_at.strftime("Зарегистрирован: %d.%m.%Y") %>
           </p>
             <button type="button" class="btn btn-primary">
               #

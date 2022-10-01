@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.paginate(page: params[:page], per_page: 16)
+    @users = User.paginate(page: params[:page], per_page: 15)
   end
   def new
     @user = User.new
@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
 
     if @user.save
+      session[:user_id] = @user.id
       redirect_to user_path(@user), notice: 'Аккаунт создан'
     else
       render 'new'
