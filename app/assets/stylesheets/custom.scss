@@ -7,3 +7,21 @@ small {
   line-height: 1.428571429;
   color: #999;
 }
+
+//Styles for home page
+
+.btn-outline-dark {
+  color: #212529;
+  border-color: #212529;
+}
+.btn-outline-dark:hover {
+  color: #fff;
+  background-color: #212529;
+  border-color: #212529;
+}
+
+.jumbotron {
+  background-size: cover;
+  padding-top: 5%;
+  padding-bottom: 10%;
+}
