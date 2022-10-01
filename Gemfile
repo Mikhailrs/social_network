@@ -33,6 +33,10 @@ gem 'mini_magick', '>= 4.9.5'
 gem 'net-smtp'
 gem 'net-pop'
 gem 'net-imap'
+
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 

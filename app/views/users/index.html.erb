@@ -1,12 +1,30 @@
 <h1 class="text-center">Все пользователи</h1>
+
+<%= will_paginate %>
+
 <div class="row">
-  <div class="offset-4 col-md-6"
   <% @users.each do |user| %>
-    <p>
-      <%= link_to user.name, user %>
-      | <%= link_to 'Удалить', user_path(user), method: :delete %>
-    </p>
+    <div class="col-md-3">
+      <div class="well well-md">
+        <% if user.avatar.attached? %>
+          <%= image_tag user.avatar, class: 'img-circle', style: 'width: 100px;'  %>
+        <% else %>
+          <%= image_tag ("photo-profile.jpg"), class: 'img-circle', style: 'width: 100px;'  %>
+        <% end %>
+        <div class="caption">
+          <h3><%= link_to user.name, user %></h3>
+          <p><%= user.email %></p>
+          <p>
+            <%= link_to user_path(user), method: :delete, class: 'button white' do %>
+              <span class="glyphicon glyphicon-trash"></span>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
   <% end %>
-  </div>
 </div>
 
+<%= will_paginate %>
+
+<br>
