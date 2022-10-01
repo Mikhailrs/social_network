@@ -3,22 +3,23 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_with model: @user do |form| %>
-      <p><%= form.label :name, 'Ваше имя' %></p>
+      <%= form.label :name, 'Ваше имя' %>
       <p><%= form.text_field :name, class: 'form-control' %></p>
 
-      <p><%= form.label :email, 'Почта' %></p>
+      <%= form.label :email, 'Почта' %>
       <p><%= form.text_field :email, class: 'form-control' %></p>
 
-      <p><%= form.label :password, 'Пароль' %></p>
+      <%= form.label :password, 'Пароль' %>
       <p><%= form.password_field :password, class: 'form-control' %></p>
 
-      <p><%= form.label :password_confirmation, 'Повторите пароль' %></p>
+      <%= form.label :password_confirmation, 'Повторите пароль' %>
       <p><%= form.password_field :password_confirmation, class: 'form-control' %></p>
 
-      <p><%= form.label :avatar, 'Загрузка фото' %></p>
+      <%= form.label :avatar, 'Загрузка фото' %>
       <p><%= form.file_field :avatar %></p>
 
       <p><%= form.submit 'Зарегистрироваться', class: "btn btn-primary" %></p>
     <% end %>
   </div>
 </div>
+
