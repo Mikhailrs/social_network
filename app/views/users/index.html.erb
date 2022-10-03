@@ -14,8 +14,10 @@
         <div class="col-md-4">
           <h4><%= link_to user.name, user %></h4>
           <p><%= user.email %></p>
-          <%= link_to user_path(user), method: :delete, class: 'button white' do %>
-            <span class="glyphicon glyphicon-trash"></span>
+          <% if current_user.admin? %>
+            <%= link_to user_path(user), method: :delete, class: 'button white' do %>
+              <span class="glyphicon glyphicon-trash"></span>
+            <% end %>
           <% end %>
         </div>
       </div>
