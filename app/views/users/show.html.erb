@@ -31,4 +31,14 @@
       </div>
     </div>
   </div>
+  <div class="col-md-8 col-md-offset-2">
+    <% if @user.microposts.any? %>
+      <h3>Стена (<%= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+      <%= will_paginate @microposts %>
+    <% end %>
+  </div>
 </div>
+

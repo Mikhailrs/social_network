@@ -1,28 +1,29 @@
-  <h1 class="text-center">Все пользователи</h1>
+<h1 class="text-center">Все пользователи</h1>
 
-  <%= will_paginate %>
+<%= will_paginate %>
 
-    <% @users.each do |user| %>
-      <div class="row well well-md">
-        <div class="col-md-2">
-          <% if user.avatar.attached? %>
-            <%= image_tag user.avatar, class: 'img-circle', style: 'width: 100px;'  %>
-          <% else %>
-            <%= image_tag ("photo-profile.jpg"), class: 'img-circle', style: 'width: 100px;'  %>
-          <% end %>
-        </div>
-        <div class="col-md-4">
-          <h4><%= link_to user.name, user %></h4>
-          <p><%= user.email %></p>
-          <% if current_user.admin? %>
-            <%= link_to user_path(user), method: :delete, class: 'button white' do %>
-              <span class="glyphicon glyphicon-trash"></span>
-            <% end %>
-          <% end %>
-        </div>
+  <% @users.each do |user| %>
+    <div class="row well well-md">
+      <div class="col-md-2">
+        <% if user.avatar.attached? %>
+          <%= image_tag user.avatar, class: 'img-circle', style: 'width: 100px;'  %>
+        <% else %>
+          <%= image_tag ("photo-profile.jpg"), class: 'img-circle', style: 'width: 100px;'  %>
+        <% end %>
       </div>
-    <% end %>
+      <div class="col-md-4">
+        <h4><%= link_to user.name, user %></h4>
+        <p><%= user.email %></p>
+        <% if current_user.admin? %>
+          <%= link_to user_path(user), method: :delete, class: 'button white',
+                      data: {confirm: "Вы уверены что хотите удалить пользователя?"} do %>
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 
-  <%= will_paginate %>
+<%= will_paginate %>
 
 

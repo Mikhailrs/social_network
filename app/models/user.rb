@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :microposts, dependent: :destroy
   attr_accessor :remember_token
   has_one_attached :avatar
   validates :avatar, content_type: ['image/png', 'image/jpeg'],
