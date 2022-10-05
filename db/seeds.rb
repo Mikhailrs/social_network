@@ -11,31 +11,24 @@ user_1 = User.create!(name:  "Mikhail",
              password_confirmation: "foobar",
              admin: true)
 
-user_2 = User.create!(name:  "Sasha",
+user_2 = User.create!(name:  "Александр",
              email: "sasha@example.com",
              password:              "foobar",
              password_confirmation: "foobar",
              admin: true)
 
-wall = user_1.create_wall
+99.times do |n|
+  name  = Faker::Name.name
+  email = "example-#{n+1}@gmail.com"
+  password = "123456"
+  User.create!(name:  name,
+               email: email,
+               password:              password,
+               password_confirmation: password)
+end
 
-wall.microposts << Micropost.new(body: "First micropost!!!", user_id: user_1.id)
-wall.microposts << Micropost.new(body: "Second micropost!!!!!", user_id: user_2.id)
-
-
-
-# 99.times do |n|
-#   name  = Faker::Name.name
-#   email = "example-#{n+1}@gmail.com"
-#   password = "123456"
-#   User.create!(name:  name,
-#                email: email,
-#                password:              password,
-#                password_confirmation: password)
-# end
-#
-# users = User.order(:created_at).take(6)
-# 50.times do
-#   content = Faker::Lorem.sentence(5)
-#   users.each { |user| user.microposts.create!(body: content) }
-# end
+users = User.order(:created_at).take(6)
+35.times do
+  content = Faker::Lorem.sentence(5)
+  users.each { |user| user.microposts.create!(body: content, wall_id: users.sample.wall.id) }
+end

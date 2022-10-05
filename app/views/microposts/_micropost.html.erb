@@ -1,5 +1,4 @@
-<div>
-  <li id="micropost-<%= micropost.id %>">
+<li id="micropost-<%= micropost.id %>">
     <span class="avatar">
       <% if find_avatar_for_micropost(micropost).attached? %>
         <%= image_tag find_avatar_for_micropost(micropost), class: 'img-circle', style: "height:50px;width:50px;"  %>
@@ -20,4 +19,3 @@
     </span>
   </li>
   <%#= image_tag Current.user.avatar.variant(resize_to_limit: [100, 100]) %>
-</div>

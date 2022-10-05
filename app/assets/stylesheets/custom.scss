@@ -20,6 +20,16 @@ small {
   border-color: #212529;
 }
 
+.btn-outline-dark {
+  color: #212529;
+  border-color: #212529;
+}
+.btn-outline-dark:hover {
+  color: #fff;
+  background-color: #212529;
+  border-color: #212529;
+}
+
 .jumbotron {
   background-size: cover;
   padding-top: 3.5%;
@@ -33,7 +43,7 @@ small {
   padding: 0;
   li {
     padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
+    border-top: 1px solid #d3d3d3;
   }
   .user {
     margin-top: 5em;
@@ -42,6 +52,8 @@ small {
   .body {
     display: block;
     margin-left: 60px;
+    margin-right: 40px;
+    word-wrap: break-word;
     img {
       display: block;
       padding: 5px 0;
