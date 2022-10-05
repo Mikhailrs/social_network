@@ -8,7 +8,7 @@ class MicropostsController < ApplicationController
                                   user_id: current_user.id,
                                   wall_id: @user.wall.id)
 
-      redirect_to user_path(@user)
+    redirect_to user_path(@user)
   end
 
   def destroy

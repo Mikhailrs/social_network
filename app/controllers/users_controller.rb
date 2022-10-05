@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :find_user, only: [:show, :destroy]
   before_action :logged_in_user, only: [:index, :edit, :update]
   before_action :correct_user, only: [:edit, :update]
 
@@ -22,7 +23,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     @microposts = @user.wall.microposts.sorted.paginate(page: params[:page], per_page: 15)
   end
 
@@ -39,7 +39,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
     @user.destroy
 
     redirect_to users_path, notice: 'Аккаунт удален'
@@ -54,5 +53,9 @@ class UsersController < ApplicationController
   def correct_user
     @user = User.find_by(id: params[:id])
     redirect_to root_path unless @user == current_user
+  end
+
+  def find_user
+    @user = User.find(params[:id])
   end
 end

@@ -1,21 +1,23 @@
-<li id="micropost-<%= micropost.id %>">
-  <span class="avatar">
-    <% if @user.avatar.attached? %>
-      <%= image_tag @user.avatar, class: 'img-circle', style: "height:50px;width:50px;"  %>
-    <% else %>
-      <%= image_tag ("photo-profile.jpg"), class: 'img-circle', style: "height:50px;width:50px;"  %>
-    <% end %>
-  </span>
-  <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
-  <span class="body"><%= micropost.body %></span>
-  <span class="icons">
-    <%= link_to user_micropost_url(@user, micropost), method: :delete,
-                data: {confirm: "Вы уверены что хотите удалить сообщение?"} do %>
-      <span class="glyphicon glyphicon-trash"></span>
-    <% end %>
-  </span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
-  </span>
-</li>
-<%#= image_tag Current.user.avatar.variant(resize_to_limit: [100, 100]) %>
+<div>
+  <li id="micropost-<%= micropost.id %>">
+    <span class="avatar">
+      <% if find_avatar_for_micropost(micropost).attached? %>
+        <%= image_tag find_avatar_for_micropost(micropost), class: 'img-circle', style: "height:50px;width:50px;"  %>
+      <% else %>
+        <%= image_tag ("photo-profile.jpg"), class: 'img-circle', style: "height:50px;width:50px;"  %>
+      <% end %>
+    </span>
+    <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
+    <span class="body"><%= micropost.body %></span>
+    <span class="icons">
+      <%= link_to user_micropost_url(@user, micropost), method: :delete,
+                  data: {confirm: "Вы уверены что хотите удалить сообщение?"} do %>
+        <span class="glyphicon glyphicon-trash"></span>
+      <% end %>
+    </span>
+    <span class="timestamp">
+      Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+    </span>
+  </li>
+  <%#= image_tag Current.user.avatar.variant(resize_to_limit: [100, 100]) %>
+</div>

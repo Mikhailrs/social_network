@@ -9,4 +9,5 @@ module ApplicationHelper
       "#{count} #{many}"
     end
   end
+
 end
