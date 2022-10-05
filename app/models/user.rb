@@ -1,7 +1,16 @@
 class User < ApplicationRecord
+  extend ActiveModel::Callbacks
+
+  after_create do
+    self.create_wall
+  end
+
   has_many :microposts, dependent: :destroy
-  attr_accessor :remember_token
+  has_one :wall, dependent: :destroy
   has_one_attached :avatar
+
+  attr_accessor :remember_token
+
   validates :avatar, content_type: ['image/png', 'image/jpeg'],
             size: {less_than: 1.megabyte}
   validates :name, presence: true, length: {maximum: 50}

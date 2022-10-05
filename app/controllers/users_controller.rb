@@ -10,10 +10,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
+    @user = User.new(user_params)
 
     if @user.save
       log_in @user
+
       redirect_to user_path(@user), notice: 'Аккаунт создан'
     else
       render 'new'
@@ -22,7 +23,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @microposts = @user.microposts.paginate(page: params[:page], per_page: 15)
+    @microposts = @user.wall.microposts.sorted.paginate(page: params[:page], per_page: 15)
   end
 
   def edit
@@ -39,7 +40,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @user.delete
+    @user.destroy
 
     redirect_to users_path, notice: 'Аккаунт удален'
   end

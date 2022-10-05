@@ -5,24 +5,37 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create!(name:  "Mikhail",
+user_1 = User.create!(name:  "Mikhail",
              email: "mikhail771@example.com",
              password:              "foobar",
              password_confirmation: "foobar",
              admin: true)
 
-99.times do |n|
-  name  = Faker::Name.name
-  email = "example-#{n+1}@gmail.com"
-  password = "123456"
-  User.create!(name:  name,
-               email: email,
-               password:              password,
-               password_confirmation: password)
-end
+user_2 = User.create!(name:  "Sasha",
+             email: "sasha@example.com",
+             password:              "foobar",
+             password_confirmation: "foobar",
+             admin: true)
 
-users = User.order(:created_at).take(6)
-50.times do
-  content = Faker::Lorem.sentence(5)
-  users.each { |user| user.microposts.create!(body: content) }
-end
+wall = user_1.create_wall
+
+wall.microposts << Micropost.new(body: "First micropost!!!", user_id: user_1.id)
+wall.microposts << Micropost.new(body: "Second micropost!!!!!", user_id: user_2.id)
+
+
+
+# 99.times do |n|
+#   name  = Faker::Name.name
+#   email = "example-#{n+1}@gmail.com"
+#   password = "123456"
+#   User.create!(name:  name,
+#                email: email,
+#                password:              password,
+#                password_confirmation: password)
+# end
+#
+# users = User.order(:created_at).take(6)
+# 50.times do
+#   content = Faker::Lorem.sentence(5)
+#   users.each { |user| user.microposts.create!(body: content) }
+# end
