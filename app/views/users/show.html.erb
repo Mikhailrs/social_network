@@ -8,8 +8,7 @@
           <% else %>
             <%= image_tag ("photo-profile.jpg"), class: 'img-thumbnail'  %>
           <% end %>
-          <br />
-          <br />
+          <br><br>
           <div>
             <% if @user == current_user %>
               <%= button_to 'Редактировать', edit_user_path(@user), method: :get, class: 'btn btn-info' %>
