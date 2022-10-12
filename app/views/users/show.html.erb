@@ -8,10 +8,11 @@
           <% else %>
             <%= image_tag ("photo-profile.jpg"), class: 'img-thumbnail'  %>
           <% end %>
-          <br />
-          <br />
+          <br><br>
           <div>
-            <%= button_to 'Редактировать', edit_user_path(@user), method: :get, class: 'btn btn-info' %>
+            <% if @user == current_user %>
+              <%= button_to 'Редактировать', edit_user_path(@user), method: :get, class: 'btn btn-info' %>
+            <% end %>
             <br />
           </div>
         </div>
@@ -31,4 +32,18 @@
       </div>
     </div>
   </div>
+
+  <div class="col-md-8 col-md-offset-2">
+    <% if logged_in? %>
+      <%= render 'microposts/form_micropost' %>
+    <% end %>
+    <h2>Стена (<%= inclination(@microposts.count, 'запись', 'записи', 'записей')%>)</h2>
+    <% if @microposts.any? %>
+        <ol class="microposts">
+          <%= render @microposts %>
+        </ol>
+      <%= will_paginate @microposts %>
+    <% end %>
+  </div>
 </div>
+

@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-md-12">
+    <%= form_with url: user_microposts_url(@user), scope: 'microposts', method: :post do |form| %>
+      <%= form.label :body, 'Введите сообщение' %>
+      <p><%= form.text_area :body, class: 'form-control' %></p>
+
+      <p><%= form.submit 'Отправить на стену', class: "btn btn-warning" %></p>
+    <% end %>
+  </div>
+</div>

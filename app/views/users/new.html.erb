@@ -1,8 +1,9 @@
-<%= render 'shared/error_messages' %>
 <h1 class="text-center">Регистрация</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_with model: @user do |form| %>
+      <%= render 'shared/error_messages', object: form.object %>
+
       <%= form.label :name, 'Ваше имя' %>
       <p><%= form.text_field :name, class: 'form-control' %></p>
 
