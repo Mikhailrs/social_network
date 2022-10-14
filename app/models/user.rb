@@ -6,6 +6,7 @@ class User < ApplicationRecord
   end
 
   has_many :microposts, dependent: :destroy
+  has_many :likes, dependent: destroy
   has_one :wall, dependent: :destroy
   has_one_attached :avatar
 
