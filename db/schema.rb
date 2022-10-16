@@ -45,11 +45,12 @@ ActiveRecord::Schema.define(version: 2022_10_14_205939) do
 
   create_table "likes", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "micropost_id", null: false
+    t.string "likeable_type", null: false
+    t.bigint "likeable_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["micropost_id"], name: "index_likes_on_micropost_id"
-    t.index ["user_id", "micropost_id"], name: "index_likes_on_user_id_and_micropost_id", unique: true
+    t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable"
+    t.index ["user_id", "likeable_id", "likeable_type"], name: "index_likes_on_user_id_and_likeable_id_and_likeable_type", unique: true
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
@@ -85,8 +86,6 @@ ActiveRecord::Schema.define(version: 2022_10_14_205939) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "likes", "microposts"
-  add_foreign_key "likes", "users"
   add_foreign_key "microposts", "users"
   add_foreign_key "microposts", "walls"
   add_foreign_key "walls", "users"

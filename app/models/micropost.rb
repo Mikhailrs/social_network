@@ -1,5 +1,5 @@
 class Micropost < ApplicationRecord
-  has_many :likes, dependent: :destroy
+  has_many :likes, as: :likeable, dependent: :destroy
   belongs_to :user
   belongs_to :wall
 

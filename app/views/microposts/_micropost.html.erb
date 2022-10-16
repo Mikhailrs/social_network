@@ -8,15 +8,16 @@
     </span>
     <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
     <span class="body"><%= micropost.body %></span>
-    <span class="icons">
-        <% if @user == current_user %>
-          <%= link_to user_micropost_url(@user, micropost), method: :delete,
-                      data: {confirm: "Вы уверены что хотите удалить сообщение?"} do %>
-            <span class="glyphicon glyphicon-trash"></span>
-          <% end %>
+    <span class="trash">
+      <% if @user == current_user %>
+        <%= link_to user_micropost_url(@user, micropost), method: :delete,
+                  data: {confirm: "Вы уверены что хотите удалить сообщение?"} do %>
+        <span class="glyphicon glyphicon-trash"></span>
         <% end %>
+      <% end %>
     </span>
-    <span class="timestamp">
+  <span class="likes"><%= render 'likes/like', micropost: micropost %></span>
+  <span class="timestamp">
       Posted <%= time_ago_in_words(micropost.created_at) %> ago.
     </span>
 </li>

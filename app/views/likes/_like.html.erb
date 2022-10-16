@@ -1,0 +1,11 @@
+<%= content_tag "div", id: "like-#{micropost.id}" do %>
+  <% if micropost.likes.find_by(user_id: current_user&.id).present? %>
+    <%= link_to micropost_likes_path(micropost), method: :post, remote: true do %>
+      <span class="glyphicon glyphicon-heart"><%= likes(micropost) %></span>
+    <% end %>
+  <% else %>
+    <%= link_to micropost_likes_path(micropost), method: :post, remote: true do %>
+      <span class="glyphicon glyphicon-heart-empty"><%= likes(micropost) %></span>
+    <% end %>
+  <% end %>
+<% end %>
