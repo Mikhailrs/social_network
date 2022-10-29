@@ -27,12 +27,7 @@
 * activestorage
 * active_storage_validations
 * bcrypt
-* bootsnap
 * bootstrap
 * faker
 * image_processing
-* pg
-* puma
-* sass-rails
-* webpacker
 * will_paginate
