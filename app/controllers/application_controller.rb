@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
 
   def logged_in_user
     unless logged_in?
-      redirect_to login_path, alert: 'Войдите в аккаунт'
+      flash[:alert] = 'Войдите в аккаунт'
+      render 'users/unauthorized_unforbidden', status: :unauthorized
     end
   end
 end

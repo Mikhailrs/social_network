@@ -39,9 +39,12 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-
-    redirect_to users_path, notice: 'Аккаунт удален'
+    if current_user.admin?
+      @user.destroy
+      redirect_to users_path, notice: 'Аккаунт удален'
+    else
+      redirect_to users_path
+    end
   end
 
   private
@@ -52,10 +55,12 @@ class UsersController < ApplicationController
 
   def correct_user
     @user = User.find_by(id: params[:id])
-    redirect_to root_path unless @user == current_user
+    render :'users/unauthorized_unforbidden', status: :forbidden unless @user == current_user
   end
 
   def find_user
     @user = User.find(params[:id])
+  rescue
+    render file: "#{Rails.root}/public/404.html", layout: false, status: 404
   end
 end
