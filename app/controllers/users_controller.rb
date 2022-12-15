@@ -53,14 +53,14 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar)
   end
 
-  def correct_user
-    @user = User.find_by(id: params[:id])
-    render :'users/unauthorized_unforbidden', status: :forbidden unless @user == current_user
-  end
-
   def find_user
     @user = User.find(params[:id])
   rescue
     render file: "#{Rails.root}/public/404.html", layout: false, status: 404
+  end
+
+  def correct_user
+    @user = User.find_by(id: params[:id])
+    render :'users/unauthorized_unforbidden', status: :forbidden unless @user == current_user
   end
 end

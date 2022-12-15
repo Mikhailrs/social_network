@@ -103,19 +103,38 @@ describe UsersController do
     it "redirect to show template if an user has been changed" do
       patch :update, params: { id: user.id, user: correct_user },
                                     session: { user_id: user.id }
+
       expect(response).to redirect_to(user_path(assigns(:user)))
     end
 
     it "notification is there if an user has been changed" do
       patch :update, params: { id: user.id, user: correct_user },
-            session: { user_id: user.id }
+                                    session: { user_id: user.id }
+
       expect(flash[:notice]).to eq("Аккаунт изменен")
     end
 
-    it "redirect to login template if other user try change" do
+    it "redirect to home template if other user try change" do
       patch :update, params: { id: user.id, user: correct_user },
-            session: { user_id: other_user.id }
-      expect(response).to redirect_to("/")
+                                    session: { user_id: other_user.id }
+
+      expect(response).to render_template("/")
+    end
+
+    it "return 403 error if other user try change" do
+      patch :update, params: { id: user.id, user: correct_user },
+                                    session: { user_id: other_user.id }
+
+      expect(response).to have_http_status(403)
+    end
+  end
+
+  describe "index action" do
+
+    it "redirect to home template if unauthorized user try render index page" do
+      get :index
+
+      expect(response).to have_http_status(401)
     end
   end
 end

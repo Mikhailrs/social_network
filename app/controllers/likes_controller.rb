@@ -4,11 +4,12 @@ class LikesController < ApplicationController
   def create
     @micropost = Micropost.find(params[:micropost_id])
 
-    like = @micropost.likes.find_by(user_id: current_user.id)
-    if like.present?
-      like.destroy
+    @like = @micropost.likes.find_by(user_id: current_user.id)
+    if @like.present?
+      @like.destroy
     else
-      like = @micropost.likes.create(user_id: current_user.id)
+
+      @like = @micropost.likes.create(user_id: current_user.id)
     end
 
     render "create.js.erb"

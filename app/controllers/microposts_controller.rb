@@ -1,7 +1,7 @@
 class MicropostsController < ApplicationController
-  before_action :find_user, only: [:create, :destroy]
   before_action :logged_in_user, only: [:create, :destroy]
-
+  before_action :find_user, only: [:create, :destroy]
+  before_action :correct_user, only: [:destroy]
 
   def create
     @micropost = Micropost.create(body: microposts_params[:body],
@@ -26,5 +26,10 @@ class MicropostsController < ApplicationController
 
   def find_user
     @user = User.find(params[:user_id])
+  end
+
+  def correct_user
+    @user = User.find_by(id: params[:user_id])
+    render file: "#{Rails.root}/public/403.html", status: :forbidden unless @user == current_user
   end
 end
